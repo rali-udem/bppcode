@@ -1,7 +1,7 @@
 # BPPCode
-This repository contains the code used to generate letters in Philippe Grand'Maison's master's thesis.
+This repository contains the code used to generate letters in Philippe Grand'Maison's master's thesis. Not all parts of the packages are intended to be portable.
 
-## Contained Projects
+## Subprojects
 
 ### GenText
 The Natural Language Generation library.
@@ -30,7 +30,20 @@ pip install nltk mock
 
 #### For BPPGen
 ~~~~
-pip install six certifi flask pymongo langid
+pip install sklearn six certifi flask pymongo langid
 ~~~~
 
-#### Test installation
+### Test installation
+From within this project's root directory.
+#### For GenText
+~~~~
+PYTHONPATH=gentext python -m unittest discover -s gentext/tests/ -p "test_*.py"
+~~~~
+
+#### For BPPGen
+~~~~
+PYTHONPATH=gentext:bppgen python -m unittest discover -s bppgen/tests/ -p "test_*.py"
+~~~~
+
+## Warning
+The French version does not work. It would require linguistic resources to properly assign gender. Lexicon generation would have to be more complex.
