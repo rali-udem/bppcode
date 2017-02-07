@@ -85,6 +85,7 @@ class TestLetter(unittest.TestCase):
         gen = generator_fn("en")
         gen.generate(data)
 
+
 class TestDataInsightSelector(unittest.TestCase):
     def test_simple(self):
         o = make_dummy_offer(u"solicitor", [u"C", u'privacy law', u'litigation'])

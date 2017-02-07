@@ -7,6 +7,7 @@ from bppgen.api.profile_api import BPPAPI
 import bppgen.letter.letter as letter
 from gentext.syntax import print_jsrealb
 from gentext.realizer import new_vocab
+import sys
 
 ADMISSIBLE_FILETYPES = ['json', 'css', 'js', 'htm', 'html',
                         'map', 'woff', 'svg', 'ttf', 'woff2']
@@ -87,5 +88,8 @@ def generate_letter():
     return generated
 
 if __name__ == '__main__' :
-    app.debug = True
-    app.run()
+    if len(sys.argv > 1) and sys.argv[1] == 'prod':
+        app.run(host='0.0.0.0', port=80)
+    else:
+        app.debug = True
+        app.run()
