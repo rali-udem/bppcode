@@ -88,7 +88,7 @@ def generate_letter():
     return generated
 
 if __name__ == '__main__' :
-    if len(sys.argv > 1) and sys.argv[1] == 'prod':
+    if len(sys.argv) > 1 and sys.argv[1] == 'prod':
         app.run(host='0.0.0.0', port=80)
     else:
         app.debug = True
