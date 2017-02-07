@@ -17,6 +17,6 @@ setup(name='bppgen',
                 'bppgen.api',
                 'bppgen.data'],
       install_requires=[
-          'flask', 'six', 'certifi', 'gentext', 'langid'
+          'pymongo', 'sklearn', 'flask', 'six', 'certifi', 'langid', 'gentext'
       ],
       zip_safe=True)

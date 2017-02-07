@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
 encoding//gentext/realizer.py=utf-8
 encoding//gentext/syntax.py=utf-8
-encoding//tests/testutils.py=utf-8
+encoding//tests/python/testutils.py=utf-8

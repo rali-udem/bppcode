@@ -109,5 +109,6 @@ def write_html(generated_text):
 
 if __name__ == '__main__':
     #exhaustive_search('en', 400, 5)
-    gen_many_copies('en', 10, 10)
+    #gen_many_copies('en', 10, 10)
+    pass
     

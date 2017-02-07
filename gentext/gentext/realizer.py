@@ -105,7 +105,6 @@ def extract_vocab_en(jsrealcode, d):
     for l in parse_syntax.LEAF_NODES:
         for m in re.finditer(l + '\("(.*?)"\)', jsrealcode):
             word = m.groups(1)[0]
-            print l, word
             if l == u'N' :
                 d[word][u'N'] = {"tab" : ["n1"]}
             elif l == u'P' :

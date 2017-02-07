@@ -6,4 +6,4 @@ encoding//bppgen/application.py=utf-8
 encoding//bppgen/data/data_access.py=utf-8
 encoding//bppgen/data/mongoaccess.py=utf-8
 encoding//bppgen/letter/letter.py=utf-8
-encoding//tests/testutils.py=utf-8
+encoding//tests/python/testutils.py=utf-8

@@ -273,7 +273,7 @@ class TestLoadAndBuild(unittest.TestCase):
         self.assertTrue("coord_s" in s)
         
     def test_simple_build(self):
-        generator = build_generator(["hello"], DUMMY_CONF)
+        generator = build_generator(["hello"], 'en', DUMMY_CONF)
         self.assertEqual(generator.generate({}), [u'"hello"'])
         
     def test_simple_build2(self):
@@ -296,7 +296,7 @@ class TestLoadAndBuild(unittest.TestCase):
             DummyContent(),
             DummyMicro()
             ]
-        generator = build_generator(sections, DUMMY_CONF)
+        generator = build_generator(sections, 'en', DUMMY_CONF)
         trees = generator.generate({1 : 2, "key" : "value"})
         self.assertEqual(trees[0], u"\"This is a simple function [(1, 2), (\\\'key\\\', \\\'value\\\')]\"")
         self.assertEqual(trees[1], u'"This is some canned text"')
