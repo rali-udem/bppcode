@@ -1,0 +1,38 @@
+{"relations" : {
+	"has_skill_for_job" : {
+		"frames" : ["S(X1, VP(V('be'), AP(A('proficient'), PP(P('in'), X2))))"],
+		"arity" : 2,
+		"signature" : ["person", "skill"]},
+		
+		"expert_in" : {
+		"frames" : ["COMPL(NP(D('my' [pe=2]), N('profile')), V('suggest'), S(X1, VP(V('be'), AP(A('expert'), PP(P('in'), X2)))))"],
+		"arity" : 2,
+		"signature" : ["person", "skill"]}
+	},
+	
+	"entities" :{
+		"prog" : {"lexi": ["NP(N('programming'))"], "types": ["skill"]},
+		"erlang" : {"lexi": ["NP(N('Erlang'))"], "types": ["skill"]},
+		"prolog" : {"lexi": ["NP(N('Prolog'))"], "types": ["skill"]},
+		"java" : {"lexi": ["NP(N('Java'))"], "types": ["skill"]},
+		"I" : {"lexi" : ["NP(Pro('I'[pe=1]))"], "types" : ["person"]},
+		"you" : {"lexi" : ["NP(Pro('I' [pe=2]))"], "types" : ["person"]}
+	},
+	
+	"structure" : {
+		"words" : {
+			"coord_s" : {"lexi" : ["C('and')"] }
+		},
+		"mods" : {
+		"profile_says" : {
+		"lexi" : ["COMPL(NP(D('my' [pe=2]), N('profile')), V('suggest'), X3)"]
+		}
+		
+			
+		}
+	},
+	
+	"shorthands" : [
+		"COMPL(X1, X2, X3) => S(X1, VP(X2, SP(C('that'), X3)))"
+	]
+}

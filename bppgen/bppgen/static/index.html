@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>BPPGen</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="main.css">
+<script src="jquery-3.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="angular.min.js"></script>
+<script src="angular-route.min.js"></script>
+<script src="bpp.js"></script>
+</head>
+
+
+<body ng-app="bpp">
+<div ng-controller="MasterController">
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">BPPGen</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="start"><a href="#!/bppgen/{{lang}}/offer">{{i18n[lang]["navbar"]["start"]}}</a></li>
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right right-navbar-buttons">
+    	<li class="navbar-right lang-button"><button class="btn navbar-btn btn-xs" ng-click="set_lang(i18n[lang]['other_lang'])">{{i18n[lang]["other_lang"]}}</button></li>
+    	<li class="navbar-right"><a href="#!/bppgen/help">{{i18n[lang]["navbar"]["help"]}}</a></li>
+    	<li class="navbar-right"><a href="#!/bppgen/about">{{i18n[lang]["navbar"]["about"]}}</a></li>
+    </ul>
+  </div>
+</nav>
+
+	<div>
+		<div ng-if="warning" class="alert alert-danger alert-dismissible" role="alert">
+			{{warning}}
+		</div>
+		<div class="view-panel" ng-view></div>
+	</div>
+	
+</div>
+</body>
+</html>

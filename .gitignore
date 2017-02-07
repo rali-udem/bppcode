@@ -1,0 +1,9 @@
+.metadata*
+.project*
+.pydev*
+*.pyc
+*~
+RemoteSystemsTempFiles*
+*.egg-info
+build*
+dist*

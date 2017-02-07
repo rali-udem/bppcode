@@ -1,0 +1,23 @@
+{"what": {
+        "Pro": {
+            "tab": ["pn7","pn6"]
+        }
+    },
+	"that": {
+		"Pro": {
+		"tab": ["pn7","pn6"]
+	}
+    },
+	"although": {
+		"Adv": {
+		"tab": ["b1"]}
+	},
+	"as" : {
+	"Adv": {
+		"tab": ["pp"]}
+	},
+    "required" : {
+    "A": {
+     "tab": ["a1"]}
+    }
+}

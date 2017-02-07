@@ -1,0 +1,106 @@
+<div class="container-fluid">
+	<div class="col-md-8" id="detail-view">
+		<div ng-if="profile" id="active-profile">
+			
+			<div>
+				<span>{{i18n[lang]["profile"]["search"]}}</span> <input type="text" ng-model="data.profileId" />
+				<button class="btn btn-primary" ng-if="data.profileId"
+					ng-click="loadProfile()">{{i18n[lang]["profile"]["load_profile"]}}</button>
+				<button class="btn btn-primary disabled" ng-if="!data.profileId"
+					ng-click="loadProfile()">{{i18n[lang]["profile"]["load_profile"]}}</button>
+			</div>
+			<table border="1">
+				<tr>
+					<td>{{i18n[lang]["profile"]["branding_claim"]}}</td>
+					<td><input type="text"
+						ng-model="profile.personalBranding_claim"></input></td>
+				</tr>
+				<tr>
+					<td>{{i18n[lang]["profile"]["branding_pitch"]}} ({{profile.personalBranding_pitch.split("
+						").length}} words)</td>
+					<td><textarea class="descr"
+							ng-model="profile.personalBranding_pitch"></textarea></td>
+				</tr>
+				<tr>
+					<td>{{i18n[lang]["profile"]["experiences"]}}</td>
+					<td>
+						<ul class="nostyle">
+							<li ng-repeat="experience in profile.experiences">
+								<table>
+									<tr>
+										<td>{{i18n[lang]["profile"]["start_date"]}}</td>
+										<td><input type="text" ng-model="experience.startDate"></input>-</td>
+									</tr>
+									<tr>
+										<td>{{i18n[lang]["profile"]["end_date"]}}</td>
+										<td><input type="text" ng-model="experience.endDate"></input></td>
+									</tr>
+									<tr>
+										<td>{{i18n[lang]["profile"]["function"]}}</td>
+										<td><input type="text" ng-model="experience.function"></input></td>
+									</tr>
+									<tr>
+										<td>{{i18n[lang]["profile"]["company_name"]}}</td>
+										<td><input type="text" ng-model="experience.companyName"></input></td>
+									</tr>
+									<tr>
+										<td>{{i18n[lang]["profile"]["mission"]}}</td>
+										<td><textarea class="descr" ng-model="experience.mission"></textarea></td>
+									</tr>
+								</table>
+							</li>
+							<li><button class="btn" ng-click="add_experience()">+</button></li>
+						</ul>
+					</td>
+				<tr>
+					<td>{{i18n[lang]["profile"]["skills"]}}</td>
+					<td>
+						<ul class="nostyle">
+							<li ng-repeat="skill in profile.skills"><input type="text"
+								ng-model="skill.name" /></li>
+							<li><button class="btn" ng-click="add_skill()">+</button></li>
+						</ul>
+					</td>
+				</tr>
+
+				<tr>
+					<td>{{i18n[lang]["profile"]["message_label"]}}</td>
+					<td>
+						<button class="btn btn-primary" ng-if="!new_candidate"
+							ng-click="generate()">{{i18n[lang]["profile"]["message_button"]}}</button>
+						<div ng-if="message_paragraphs[active_index]">
+							<p
+								ng-repeat="para in message_paragraphs[active_index] track by $index">{{para}}</p>
+						</div>
+					</td>
+				</tr>
+			</table>
+			
+			<div class="buttons">
+				<button class="btn" ng-show="!new_candidate" ng-click="deactivate()">{{i18n[lang]
+				["profile"]["hide"]}}</button>
+			<button class="btn" ng-show="new_candidate"
+				ng-click="cancel_candidate()">{{i18n[lang]["profile"]["cancel"]}}</button>
+			<button class="btn btn-primary" ng-show="new_candidate"
+				ng-click="save_candidate()">{{i18n[lang]["profile"]["confirm_candidate_button"]}}</button>
+			</div>
+			
+		</div>
+		
+	</div>
+	<div class="col-md-4" id="candidate-list">
+		<div ng-if="candidateList.length > 0" class="candidate-listing" ng-repeat="candidate in candidateList track by $index">
+			<!-- I do not know what you want in your listing. With a full profile, go for a 
+			photo and the name. I'll just put the index. Work it out for yourselves.-->
+			<span>{{profile_snippet(candidate)}}</span>
+			<button class="btn btn-sm" ng-click="activate($index)"><span class="glyphicon glyphicon-eye-open"></span></button>
+		</div>
+		<p ng-if="candidateList.length == 0" class="candidate-listing">
+			{{i18n[lang]["profile"]["empty_profile_list"]}}
+		</p>
+		<div class="new-candidate-listing">
+			<button class="btn btn-primary" ng-click="add_candidate()">
+			{{i18n[lang]["profile"]["new_candidate_button"]}}</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,46 @@
+<div>
+	<div>
+		<span>{{i18n[lang]["offer"]["search"]}}</span><input type="text" ng-model="offerId"/> 
+		<button ng-if="offerId" class="btn btn-primary" ng-click="loadOffer()">{{i18n[lang]["offer"]["load_offer"]}}</button>
+	</div><br/>
+	<table border="1" id="offer-table">
+			<tr>
+				<td>{{i18n[lang]["offer"]["title"]}}</td>
+				<td><input type="text" ng-model="$parent.offer.title"></input></td>
+			</tr>
+			<tr>
+				<td>{{i18n[lang]["offer"]["company_name"]}}</td>
+				<td><input type="text" ng-model="offer.company_name"></input></td>
+			</tr>
+			<tr>
+				<td>{{i18n[lang]["offer"]["place"]}}</td>
+				<td><input type="text"  ng-model="offer.place"></input></td>
+			</tr>
+			<tr>
+				<td>{{i18n[lang]["offer"]["descr"]}} ({{offer.description.split(" ").length}} words)
+				
+				<button ng-click="editable_offer = !editable_offer">
+					<span ng-if="!editable_offer" class="glyphicon glyphicon-pencil"></span>
+					<span ng-if="editable_offer" class="glyphicon glyphicon-lock"></span>
+				</button>
+				</td>
+				<td>
+					<div>
+					<textarea class="descr" ng-if="editable_offer" ng-model="offer.description"></textarea>
+					<p ng-if="!editable_offer">{{offer.description}}</p>
+					</div>
+					<div>
+					
+					</div>
+					
+				</td>
+			</tr>
+	</table>
+		
+		<div class="buttons">
+			<a href=#!/bppgen/{{lang}}/offer/{{next()}}/candidates>
+				<button ng-if="offer.description && offer.title" type="button" class="btn btn-primary">{{i18n[lang]["offer"]["next"]}}</button></a>
+				<button ng-if="!(offer.description && offer.title)" type="button" class="btn btn-primary disabled">{{i18n[lang]["offer"]["next"]}}</button>
+			</a>
+		</div>
+</div>

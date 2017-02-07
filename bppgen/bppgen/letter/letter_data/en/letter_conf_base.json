@@ -1,0 +1,257 @@
+{
+
+"hardcoded_entities" : {
+		"our_client" : {"lexi" : ["NP(D('our')[pe=1], N('client'))"]},
+		"o_edit": {
+            "lexi": [
+                "NP(N('Editor'))"
+            ], "types": ["occupation"]
+        },
+	"o_financ": {
+            "lexi": [
+                "NP(N('Financial Analyst'))"
+            ], 
+            "types": [
+                "occupation"
+            ]
+        },  
+		"o_technic" : {"lexi" : ["NP(N('Technician'))"], "types": ["occupation"]},
+		"o_advertis" : {"lexi" : ["NP(N('Advertiser'))"], "types": ["occupation"]},
+		"I" : {"lexi" : ["L('I')"]},
+		"you" : {"lexi" : ["L('you')"]},
+		"environment issu" : {"lexi" : ["NP(N('Environment Issues'))"], "types" : ["skill"]},
+		"flattery_I" : {"lexi" : ["NP(D('a'), AP(A('true')), N('team'), N('player'))"],
+				"types" : []}
+
+},
+
+"lexicon": {
+	"skill_noun" : {"lexi":["N('skill')"]},
+	"once" : {"lexi":["AdvP(Adv('once'))", "AdvP(Adv('before'))"]},
+	"I" : {"lexi":["NP(Pro('I')[pe=1])"]},
+	"you" : {"lexi": ["NP(Pro('I')[pe=2])"]},
+        "exactly": {"lexi": ["Adv('exactly')", "Adv('precisely')"]},
+        "greatly": { "lexi": ["AdvP(Adv('greatly'))", "AdvP(Adv('immensely'))"]},
+        "hypothesis_verb" : {"lexi" : ["V('assume')", "V('suppose')","V('figure')", "V('surmise')"]},
+	"suggest_verb" : {"lexi" : ["V('suggest')", "V('indicate')","V('show')"]},
+	"deduce_verb" : {"lexi" : ["V('infer')", "V('deduce')", "V('conclude')","V('gather')"]},
+        "expert_ajd": {"lexi": ["A('expert')", "A('master')"]},
+	"because_conj" : {"lexi": ["C('because')", "C('since')"]},
+	"simple_flattery" : {"lexi" : [
+		"S(L('you'), VP(V('be'), AP(AdvP(Adv('uniquely')), L('qualified'))))",
+		"S(L('you'), VP(V('be'), AP(L('greatly'), L('qualified'))))",
+		"S(NP(D('my')[pe=2], N('experience')), VP(V('seem'), AP(A('relevant'))))"
+	]},
+        "specialist_humility" : {
+        	"lexi": [
+        	        "NP(D('a'), N('specialist'))", 
+        	        "AP(AdvP(Adv('well')), A('versed'))"
+            ]
+        },
+	"qualified" : {"lexi" : ["A('qualified')", "A('competent')", "A('capable')"]},
+	"good_thing" : {"lexi" : ["AP(A('encouraging'))", "NP(D('a'), AP(A('good')), N('thing'))"]},
+        "useful_vp" : {"lexi": ["VP(V('can'), V('come'), PP(P('in'), NP(N('handy'))))", "VP(V('be'), L('good_thing'))"]},
+        "moreover": {
+            "lexi": [
+                "AdvP(Adv('moreover'))", 
+                "AdvP(Adv('furthermore'))",
+		"AdvP(Adv('what more'))"
+            ]
+        },
+	"job" : {"lexi":["NP(N('position'))", "NP(N('occupation'))", "NP(N('job'))"]},
+	
+        "much" : {"lexi" : ["AdvP(Adv('much'))", "NP(D('a'), N('lot'))", "SP(S(NP(Pro('all'), AdvP(Adv('there')), VP(V('is'), PP(P('to'), V('know'))))))"]},
+	"same_adj" : {"lexi" : ["AP(A('identical'))", "AP(A('same'))"]},
+	"similar_adj" : {"lexi" : [
+		"AP(A('similar'))",
+		"AP(AdvP(Adv('quite')), A('similar'))",
+		"AP(AdvP(Adv('relatively')), A('equivalent'))"]},
+        "proficient": {
+            "lexi": [
+                "A('proficient')", 
+                "A('comfortable')"
+            ]
+        },
+        
+        "humility_phrase" : {
+        "lexi": [
+        	"S(L('I'), VP(V('be'), AdvP(Adv('not')), L('specialist_humility')))"]
+        },
+        
+        "desire_phrase": {
+            "lexi": [
+                "S(NP(D('my')[pe=1], N('client')), VP(V('be') [t=p; pe=3], V('look') [t=pr], PP(P('for'))))",
+		"S(NP(D('my')[pe=1], N('client')), VP(V('have') [t=p; pe=3], NP(AP(A('dire')), N('need'), PP(P('of')))))"
+            ]
+        }
+
+    }, 
+    "nuclei_conf": {
+    
+    "nuclei": {
+	"profile_psych" : {
+		"entity_weight_aversion": 1, 
+		"frames" :[
+		"SENT(COMPL(NP(D('my')[pe=2], N('profile')), L('suggest_verb'), X1), X2)",
+		"SENT(S(L('I'), VP(L('deduce_verb'), PP(P('from'), NP(D('my')[pe=2], N('profile'))), SP(C('that'), X1))), X2)"],
+		"juxtaposition_aversion": 0.5, 
+            "relations": [{"profile_psychology":1}, {"job_descr_employer" : 1}], 
+            "weight": 10
+	},
+    
+        "assertive_2": {
+            "entity_weight_aversion": 1, 
+            "frames": [
+                "REASONS(L('simple_flattery'), X1)"
+            ], 
+            "juxtaposition_aversion": 0.1, 
+            "relations": [
+                {
+                    "explicit_offer_skill_covered_only_by_experience": 0.3, 
+                    "implicit_offer_skill_covered_only_by_experience": 0.1, 
+                    "inferred_required_profile_skill": 0.3, 
+                    "junior_previous_occupation": 0.7, 
+                    "profile_skill_expertise": 1, 
+                    "profile_skill_proficiency": 2, 
+                    "same_previous_occupation": 0.6, 
+                    "similar_previous_occupation": 0.3
+                }
+            ], 
+            "weight": 1
+        },
+        "first_sentence": {
+            "entity_weight_aversion": 0.8, 
+            "frames": [
+                "WHICH_IS_ADV(X1, L('exactly'), L('desire_phrase'))"
+            ], 
+            "juxtaposition_aversion": 0.5, 
+            "relations": [
+                {
+                    "junior_previous_occupation": 1.0, 
+                    "profile_skill_expertise": 1.1, 
+                    "same_previous_occupation": 1.0
+                }
+            ], 
+            "weight": 10
+        },
+
+	"impressed" : {
+	"entity_weight_aversion": 1.5, 
+            "frames": [
+                "S(L('you'), VP(V('be'), AP(AdvP(Adv('uniquely')), A('qualified')), SP(L('because_conj'), X1)))"
+            ], 
+            "juxtaposition_aversion": 1, 
+            "relations": [
+                {
+                    "explicit_offer_skill_covered_only_by_experience": 1.0, 
+                    "implicit_offer_skill_covered_only_by_experience": 1.0, 
+                    "similar_previous_occupation": 1.1
+                }
+            ], 
+            "weight": 1},
+
+
+        "unsure": {
+            "entity_weight_aversion": 1.5, 
+            "frames": [
+                "S(CP(C('but'), L('humility_phrase'), X1))"
+          ], 
+            "juxtaposition_aversion": 1, 
+            "relations": [
+                {
+                    "explicit_offer_skill_covered_only_by_experience": 1.0, 
+                    "implicit_offer_skill_covered_only_by_experience": 1.0, 
+                    "similar_previous_occupation": 1.1
+                }
+            ], 
+            "weight": 1
+        }
+    },
+    "nuclei_order": {
+	    "presentation" : ["profile_psych"],
+	    "insight" : ["first_sentence", "assertive_2", "impressed", "unsure"]}
+    },
+    "relations": {
+
+	"profile_psychology" : {
+            "arity": 1,
+            "frames": ["YOU_ARE(X1)"]
+	},
+
+	"job_descr_employer" : {
+            "arity": 2,
+            "frames": [
+"S(NP(D('the'), N('position')), SP(L('you'), VP(V('be'), V('be')[t=pr], V('consider')[t=ps], PP(P('for')))), VP(V('be'), X1, PP(P('with'), X2)))",
+"S(L('you'), VP(V('be'), V('be')[t=pr], V('consider')[t=ps], PP(P('for'), NP(D('a'), N('position'), PP(P('as'), X1)), PP(P('with'), X2))))"
+	]
+	},
+
+        "explicit_offer_skill_covered_only_by_experience": {
+            "arity": 3, 
+            "frames": [
+                "COMPL(L('I'), L('hypothesis_verb'), S(NP(D('my')[pe=2], N('experience'), PP(P('as'), X3)), VP(V('teach')[t=ps], X1, L('much'), PP(P('about'), X2))))"]
+        }, 
+        "implicit_offer_skill_covered_only_by_experience": {
+            "arity": 3, 
+            "frames": [
+		"COMPL(L('I'), L('hypothesis_verb'), S(NP(D('my')[pe=2], N('experience'), PP(P('as'), X3)), VP(V('teach')[t=ps], X1, L('much'), PP(P('about'), X2))))"]
+
+        }, 
+        "inferred_required_profile_skill": {
+            "arity": 2, 
+            "frames": [
+                "S(L('I'), VP(L('hypothesis_verb'), SP(S(NP(D('my')[pe=2], L('skill_noun'), PP(P('in'), X2)), L('useful_vp')))))"
+            ]
+        }, 
+        "junior_previous_occupation": {
+            "arity": 2, 
+            "frames": [
+                "S(NP(D('most'), N('people')[n=p], PP(P('in'), NP(D('this'), N('position')))), VP(V('be')[n=p;t=ps], X2, PP(P('like'), X1), L('once')))"
+            ]
+        }, 
+        "profile_skill_expertise": {
+            "arity": 2,
+            "frames": [
+            "S(X1, VP(V('be'), NP(D('a'), N('expert'), PP(P('of'), X2))))",
+            "S(X1, VP(V('be'), AP(L('expert_ajd'), PP(P('in'), X2))))"
+            ]
+        }, 
+        "profile_skill_proficiency": {
+            "arity": 2, 
+            "frames": [
+                "S(X1, VP(V('be'), AP(L('proficient'), PP(P('in'), X2))))"
+            ]
+        }, 
+        "same_previous_occupation": {
+            "arity": 2, 
+            "frames": [
+                "S(X1, VP(V('occupy')[perf=true;t=ps], NP(D('the'), L('same_adj'), L('job'), PP(P('of'), X2))))"
+            ]
+        }, 
+        "similar_previous_occupation": {
+            "arity": 2, 
+            "frames": [
+                "S(X1, VP(V('occupy')[perf=true;t=ps], NP(D('the'), L('similar_adj'), L('job'), PP(P('of'), X2))))"
+            ]
+        }
+    }, 
+    
+    
+    "shorthands": [
+		"YOU_ARE(X1) => S(L('I'), VP(V('be'), X1))",
+		"COMPL(X1, X2, X3) => S(X1, VP(X2, SP(C('that'), X3)))", 
+		"ADJP(X1, X2, X3, X4) => S(X1, VP(V('be'), AP(X2, PP(X3, X4))))", 
+		"WHICH_IS_ADV(X1, X2, X3) => S(X1, SP(S(NP(Pro('which')), VP(V('be'), AdvP(X2), SP(S(NP(Pro('what')), X3)))))[b=','])", 
+		"WHICH_IS(X1, X2) => S(X1, SP(S(NP(Pro('which')), VP(V('be'), SP(S(C('what'), X2)))))[b=','])",
+		"REASONS(X1, X2) => SENT(X1, S(AdvP(Adv('indeed')), X2))"
+    ], 
+    "structure": {
+        "words": {
+            "coord_s": {
+                "lexi": [
+                    "C('and')"
+                ]
+            }
+        }
+    }
+}
