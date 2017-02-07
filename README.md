@@ -74,9 +74,11 @@ cd bppgen
 And follow the link. It should work out of the box.
 
 #### Make the application public
-The application is configured to run locally. One option is to use Flask's ability to act as a stand-alone server. You simply have to modify `.runserver.sh` and add the keyword `prod` after "application.py". This option requires apache2 to be stopped and is this NOT recommended.
+The application is configured to run locally. You may want to make it available to the Web.
 
-The recommended option is to configure apache2 properly. To configure apache2 to serve a Flask application, follow the instructions at http://flask.pocoo.org/docs/0.12/deploying/mod_wsgi/. Pay special attention to WSGIDaemonProcess/WSGIProcessGroup.
+* One option is to use Flask's ability to act as a stand-alone server. You simply have to modify `.runserver.sh` and add the keyword `prod` after "application.py". This option requires apache2 to be stopped. This NOT recommended, but really easy.
+
+* The recommended option is to configure apache2 properly. To configure apache2 to serve a Flask application, follow the instructions at http://flask.pocoo.org/docs/0.12/deploying/mod_wsgi/. Pay special attention to WSGIDaemonProcess/WSGIProcessGroup to avoid problems with the Global Interpreter Lock.
 
 ## Warning
 The French version does not work. It would require linguistic resources to properly assign gender. Lexicon generation would have to be more complex.
