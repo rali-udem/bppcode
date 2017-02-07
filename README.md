@@ -31,7 +31,7 @@ pip install nltk mock==1.0.1
 
 #### For BPPGen
 ~~~~
-pip install sklearn six certifi flask pymongo langid
+pip install sklearn six certifi flask pymongo langid bs4
 ~~~~
 
 ### Test installation
