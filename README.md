@@ -45,7 +45,7 @@ apt-get install python-lxml
 
 Then you can get the python dependencies.
 ~~~~
-pip install sklearn six certifi flask pymongo langid bs4 lxml
+pip install sklearn six certifi flask pymongo langid bs4 lxml urllib3
 ~~~~
 
 You might experience problems with Flask on some installations. The package had incorrect dependency management in older versions. Simply do the following:
