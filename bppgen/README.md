@@ -23,7 +23,17 @@ The lexicon file is in letter_data. The structure is described in Gentext's docu
 BPPGen comes equipped with a Web Interface.
 
 ## API
+### Calls
+| CALL        | Description   |
+| ------------- |-------------|
+|`GET /api/offer/<offer_request>`| Gets a offer. The path parameter is either a valid id, or a keyword.|
+|`GET /api/profile/<profile_request>`| Gets profile. The path parameter is either a valid id, or a keyword.|
+|`GET /api/letter/<offer_arg>/candidates/<profile_args>`|Generates letters. Return format is a JSON document mapping the generated letter to the appropriate profile_arguments. `offer_arg` is a single ID or keyword. `profile_args` is a list of profile_arguments, each of which is either an ID or a keyword.|
 
-GET /api/offer/offer_request to get a offer. The path parameter is either a valid id, or a keyword.
-GET /api/profile/profile_request to get an offer. The path parameter is either a valid id, or a keyword.
-POST /api/letter/ 
+### Example
+For instance, `GET /api/letter/plumber/candidates/plumber+gardener` returns :
+~~~~
+{"plumber": "Good day to you John Doe,\nI write this email after having read your LinkedIn profile. My name is Joan, I am a recruiter with LittleBIGJob. Our company uses an artificial intelligence to make data-driven decisions in human resources. I only contact the best candidates based on statistical models, and you've made the short list.\nYour profile indicates that you are a true team player. The position you are being considered for is Business with John The Plumber.\nYou are pretty competent. Your past experience as Plumber tells me that you master Plumbing.\nWould you be open to discuss this over the phone? When would you be available?\nThank you for your time and your reply,\n",
+
+"gardener": "Good day to you John Doe,\nI write this email after having read your LinkedIn profile. My name is Joan, I am a recruiter with LittleBIGJob. Our company uses an artificial intelligence to make data-driven decisions in human resources. I only contact the best candidates based on statistical models, and you've made the short list.\nI gather from your profile that you are a true team player. You are being considered for a position of Business with John The Plumber.\n\nWould you be open to discuss this over the phone? When would you be available?\nThank you for your time and your reply,\n"}
+~~~~
