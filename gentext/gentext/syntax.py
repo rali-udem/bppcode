@@ -6,7 +6,6 @@
 
 CANNED_SYMBOL = "CANNED"
 import copy
-import logging
 
 COMPACT_PRINTS = True
 
@@ -27,7 +26,7 @@ def _print_jsrealb(tree):
         try:
             b = u'{0}("{1}")'.format(unicode(c["type"]), unicode(c["value"]))
         except KeyError as e :
-            logging.error('Problem printing ' + str(tree.content))
+            #logging.error('Problem printing ' + str(tree.content))
             raise e
     if tree.content.has_key("modifiers") :
         for k, v in tree.content["modifiers"].items() :
@@ -57,7 +56,7 @@ def print_jsrealb(tree):
         except AttributeError :
             return u'{0}'.format(tree)
     except Exception as e:
-        logging.error(tree)
+        #logging.error(tree)
         raise Exception('Failed to print {0}'.format(tree),e)
 
 
@@ -258,7 +257,7 @@ def __bind(pattern, against, bindings):
         var_name = pattern.var_name
         if var_name in bindings and bindings[var_name] != against:
             conflict = bindings[var_name]
-            logging.debug("Variable conflict on " + var_name + ":" + str(against) + " but was " + str(conflict))
+            #logging.debug("Variable conflict on " + var_name + ":" + str(against) + " but was " + str(conflict))
             return None
         else :
             bindings[var_name] = against.copy()
@@ -269,7 +268,7 @@ def __bind(pattern, against, bindings):
             if child_binding is not None:
                 bindings.update(child_binding)
             else:
-                logging.debug("Failed matching children {0} AGAINST {1} {2}".format(pattern.children[i], against.children[i], bindings))
+                #logging.debug("Failed matching children {0} AGAINST {1} {2}".format(pattern.children[i], against.children[i], bindings))
                 return None
         except KeyError as _:
             return None

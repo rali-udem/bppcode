@@ -87,6 +87,19 @@ def generate_letter():
     generated = letter.generate_and_realize_letter(all_data['offer'], all_data['profile'], generation_data)
     return generated
 
+@app.route('/letter/offer/<offer_id>/candidates/<profile_args>', methods=['GET'])
+def generate_letter_api(offer_id, profile_args):
+    offer_data = loads(get_offer(offer_id))
+    generated_letters = {}
+    generator = letter.build_letter_generator("en")
+    for profile_arg in profile_args.split('+'):
+        profile_data = loads(get_profile(profile_arg))
+        generated_letters[profile_arg] = generator.generate_and_realize(
+            {"candidate" : profile_data,
+             "offer" : offer_data,
+             "generation_data" : DEFAULT_GENERATION_DATA})
+    return dumps(generated_letters)
+
 if __name__ == '__main__' :
     if len(sys.argv) > 1 and sys.argv[1] == 'prod':
         app.run(host='0.0.0.0', port=80)
