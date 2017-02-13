@@ -101,8 +101,15 @@ def generate_letter_api(offer_id, profile_args):
     return dumps(generated_letters)
 
 if __name__ == '__main__' :
-    if len(sys.argv) > 1 and sys.argv[1] == 'prod':
-        app.run(host='0.0.0.0', port=80)
+    # very simple option reading
+    if len(sys.argv) > 1:
+        if sys.argv[1] == 'prod':
+            app.run(host='0.0.0.0', port=80)
+        elif sys.argv[1] == '-port':
+            if len(sys.argv) > 2 and sys.argv[2].isdigit():
+                app.run(host='0.0.0.0', port=sys.argv[2])
+            else:
+                print >> sys.stderr, "Usage: prog -port <portnumber>"
     else:
         app.debug = True
         app.run()
