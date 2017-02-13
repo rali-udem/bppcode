@@ -1,11 +1,55 @@
-<div class="about-panel">
-	
-	<p>This is the user interface to BPPGen, a letter generator for headhunters. BPPGen relies on Gentext, 
-	an experimental multi-purpose <a href="https://en.wikipedia.org/wiki/Natural_language_generation">
-	Natural Language Generation</a> framework. Gentext uses <a href="https://github.com/rali-udem/JSrealB">JsRealB</a> for realization.</p>
-	
-	<p>BPPGen and Gentext were developed by Philippe Grand'Maison for the ButterflyPredictiveProject (BPP),
-	under the supervision of Professor Guy Lapalme. BPP is a joint research project between
-	<a href="http://rali.iro.umontreal.ca/rali/">RALI (Université de Montréal)</a> and <a href="http://www.littlebigjob.com/">LittleBIGJob</a>.
+<div class="help-panel">
+
+	<p>This application allows head-hunters to generate recruitment
+		letters destined to be sent to potential candidates. It uses the
+		information contained in a job offer and a candidate profile to create
+		a letter tailored to the candidate.</p>
+
+	<ol>
+		<li>Click <i>Start</i></li>
+		<li><b><span style='color: #5B9BD5'>Enter the job
+					offer.</span></b><b> </b>To do this, you have two options.</li>
+
+		<ol type="a">
+			<li>You click the pencil icon and fill out the fields, <i><span
+					style='color: #5B9BD5'>or</span></i></li>
+			<li>You enter an offer id (retrievable in the backing database,
+				e.g. <code>
+					<b>55157fc5c51c771c4bc36ffe</b>
+				</code>) or a keyword to be found in an offer, then click the button <i>Load
+					offer</i>. [See Note below]
+			</li>
+		</ol>
+
+		<li>Click the button <i>Next</i></li>
+		<li><b><span style='color: #5B9BD5'>Select a candidate
+			</span></b>by clicking the button <i>New candidate</i>. Like for the offers, you
+			have two options to fill out the information related to a candidate.</li>
+
+		<ol type="a">
+			<li>You fill out the fields manually.</li>
+			<li>You enter a candidate id (retrievable in the backing
+				database, e.g. <code>
+					<b>52b31a880b045119318b45a0</b>
+				</code>) or a keyword to be found in a profile, then click the button <i>Load
+					profile</i>. [See Note below]
+			</li>
+		</ol>
+
+		<li>Click the button <i>Add to list</i></li>
+		<li>Click the button <i>Generate</i>. This generates the letter
+			after a few seconds.
+		</li>
+
+	</ol>
+
+	<hr />
+
+	<p>
+		<b>Note</b>: Retrieving an offer or a candidate from the underlying
+		databases is only possible if the bridge between the application and
+		these databases is correctly set up. See the instructions provided
+		with this package.
+	</p>
 
 </div>
