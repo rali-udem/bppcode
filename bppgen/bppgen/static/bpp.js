@@ -291,14 +291,17 @@ app.controller('CandidatesController', ['BPPService','$route', '$routeParams', '
 	 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 	
 	function generate() {
+	    $score.isDisabled = true;
 		BPPService.generateLetter(
 				$scope.$parent.offer, $scope.profile, $scope.$parent.lang)
 				.then(function(response){
 					var letter = response.data;
 					$scope.message_paragraphs[$scope.active_index] = letter.split('\n');
+				    $score.isDisabled = false;
 				},
 				 function(response) {
 					console.log('ERROR:' + response);
+					$score.isDisabled = false;
 				});
 	}
 	
