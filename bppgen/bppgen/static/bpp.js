@@ -160,6 +160,9 @@ app.config(function($routeProvider) {
     .when("/bppgen/about", {
         templateUrl : "about.htm"
     })
+    .when("/bppgen/help", {
+        templateUrl : "help.htm"
+    })
     .when("/bppgen/:lang/offer", {
         templateUrl : "offer.htm",
         controller : "OfferController"
