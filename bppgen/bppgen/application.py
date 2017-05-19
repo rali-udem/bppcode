@@ -54,6 +54,7 @@ def serve_static(filename, extension):
 
 @app.route('/api/offer/<string:offer_id>')
 def get_offer(offer_id):
+    offer_id = offer_id.encode('utf-8')
     return get_best(offer_id,
                     api.get_offer,
                     api.query_offers,
@@ -61,6 +62,7 @@ def get_offer(offer_id):
 
 @app.route('/api/profile/<string:profile_id>')
 def get_profile(profile_id):
+    profile_id = profile_id.encode('utf-8')
     return get_best(profile_id, api.get_profile, api.query_profiles, 'expfunc:"{0}" OR claim:"{0}" OR skillname:"{0}"')
     
 @app.route('/letter_only', methods=['POST'])
